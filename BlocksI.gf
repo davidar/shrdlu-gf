@@ -1,7 +1,8 @@
-incomplete concrete BlocksI of Blocks = open Syntax, Extend, Idiom, Lexicon, LexBlocks, Progr in {
+incomplete concrete BlocksI of Blocks = open Syntax, Conjunction, Extend, Idiom, Lexicon, LexBlocks in {
 lincat
   Message = Utt;
   Statement = S;
+  ListStatement = ListS;
   Relative = RS;
   Determiner = Det;
   Verb = V2;
@@ -9,6 +10,7 @@ lincat
   Interrogative = IP;
   Adjective = A;
   Item = NP;
+  ListItem = ListNP;
   Kind = CN;
   Quality = AP;
   Location = Adv;
@@ -21,12 +23,18 @@ lincat
   Polarity = Pol;
 
 lin
+  BaseStatement = BaseS;
+  ConsStatement = ConsS;
+  BaseItem = BaseNP;
+  ConsItem = ConsNP;
+
   Command verb item = mkUtt (mkImp (mkVP verb item));
   CommandLocation verb item loc = mkUtt (mkImp (mkVP (mkVP verb item) loc));
   Query tense ant pol pred = mkUtt (mkQS tense ant pol pred);
   Declare s = mkUtt s;
 
   Stmt tense ant pol pred = mkS tense ant pol pred;
+  SAnd ss = mkS and_Conj ss;
 
   Rel tense ant pol pred = mkRS tense ant pol pred;
   RelAnd x y = mkRS (and_Conj | but_Conj) x y;
@@ -43,6 +51,7 @@ lin
   Any = mkDet any_Quant;
   AnyPlural = mkDet any_Quant pluralNum;
   Every = every_Det;
+  Each = each_Det;
 
   Do = do_V2;
   Grasp = grasp_V2 | pick_up_V2;
@@ -56,9 +65,11 @@ lin
   Touch = touch_V2;
   Clean = clean_V2 | clear_V2 | clean_off_V2 | clear_off_V2;
   Build = build_V2;
+  Move = move_V2;
 
   Can = can_VV;
   StartTo = start_to_VV;
+  Must = must_VV;
 
   What = what_IP;
   HowMany kind = mkIP how8many_IDet kind;
@@ -76,18 +87,20 @@ lin
 
   Thing det kind = mkNP det kind;
   It = it_NP;
+  Me = i_NP;
   You = you_NP;
   They = they_NP;
   Something = something_NP;
   ThatItem = that_NP;
   OneItem = one_NP;
   R det kind r = mkNP det (mkCN kind r);
-  BothAnd x y = mkNP (both7and_DConj | and_Conj) x y;
-  EitherOr x y = mkNP (either7or_DConj | or_Conj) x y;
+  And xs = mkNP (both7and_DConj | and_Conj) xs;
+  Or xs = mkNP (either7or_DConj | or_Conj) xs;
   SupportOf item
     = mkNP the_Det (mkCN support_N2 item)
     | mkNP (mkDet (Extend.GenNP item)) support_N -- genitive
     ;
+  TopOf item = mkNP the_Det (mkCN top_N2 item);
 
   Mod quality kind = mkCN quality kind;
   Block = mkCN block_N;
@@ -100,6 +113,7 @@ lin
   Colour = mkCN colour_N;
   Stack = mkCN stack_N;
   Steeple = mkCN steeple_N;
+  Loc = mkCN location_N;
 
   Qual adj = mkAP adj;
   MoreThan adj item = mkAP adj item;
@@ -110,11 +124,13 @@ lin
   In item = mkAdv (inside_Prep | in_Prep | into_Prep) item;
   On item = mkAdv (on_top_of_Prep | on_Prep | onto_Prep) item;
   LeftOf item = mkAdv (to_the_left_of_Prep | left_of_Prep) item;
+  Towards item = mkAdv to_Prep item;
 
   Before s = mkAdv before_Subj s;
   While s = mkAdv (when_Subj | while_Subj) s;
   Then = then_Adv;
   Now = now_Adv;
+  Initially = initially_Adv;
 
   Polar pred = mkQCl pred;
   When pred = mkQCl when_IAdv pred;
@@ -128,33 +144,35 @@ lin
   QPred2 i item verb
     = mkQCl i (mkClSlash item verb)
     | mkQCl i (passiveVP verb item) -- passive
-    | mkQCl i (mkClSlash item (Progr.ProgrVPSlash (mkVPSlash verb))) -- progressive
+    | mkQCl i (mkClSlash item (Extend.ProgrVPSlash (mkVPSlash verb))) -- progressive
     ;
   QPred2Time i item verb t
     = mkQCl i (mkClSlash (mkClSlash item verb) t)
     | mkQCl i (mkVP (passiveVP verb item) t) -- passive
-    | mkQCl i (mkClSlash (mkClSlash item (Progr.ProgrVPSlash (mkVPSlash verb))) t) -- progressive
+    | mkQCl i (mkClSlash (mkClSlash item (Extend.ProgrVPSlash (mkVPSlash verb))) t) -- progressive
     ;
   QQual i quality = mkQCl i quality;
   QLocation i loc = mkQCl i loc;
   QIdentity i item = mkQCl i item;
 
   RPred1 verb item
-    = mkRCl (that_RP) (mkVP verb item)
-    | mkRCl (that_RP) (mkClSlash (mkCl item (passiveVP verb)) by8agent_Prep) -- passive
-    | mkRCl (that_RP) (progressiveVP (mkVP verb item)) -- progressive
+    = mkRCl that_RP (mkVP verb item)
+    | mkRCl that_RP (mkClSlash (mkCl item (passiveVP verb)) by8agent_Prep) -- passive
+    | mkRCl that_RP (progressiveVP (mkVP verb item)) -- progressive
     ;
   RPred2 item verb
-    = mkRCl (that_RP) (mkClSlash item verb)
-    | mkRCl (that_RP) (passiveVP verb item) -- passive
-    | mkRCl (that_RP) (mkClSlash item (Progr.ProgrVPSlash (mkVPSlash verb))) -- progressive
+    = mkRCl that_RP (mkClSlash item verb)
+    | mkRCl that_RP (passiveVP verb item) -- passive
+    | mkRCl that_RP (mkClSlash item (Extend.ProgrVPSlash (mkVPSlash verb))) -- progressive
     ;
   RQual quality
-    = mkRCl (that_RP) quality;
+    = mkRCl that_RP quality;
   RLocation loc
-    = mkRCl (that_RP) loc;
+    = mkRCl that_RP loc;
   RITellYou verb
-    = mkRCl (that_RP) (mkClSlash i_NP (mkVPSlash tell_to_V2V you_NP (mkVPSlash verb)));
+    = mkRCl that_RP (mkClSlash i_NP (mkVPSlash tell_to_V2V you_NP (mkVPSlash verb)));
+  RPreverbLocation preverb location
+    = mkRCl that_RP preverb (mkVP location);
 
   SPred s v o
     = mkCl s (mkVP v o)
@@ -170,6 +188,7 @@ lin
     | mkCl subject preverb (Extend.ComplSlashPartLast (mkVPSlash verb) item) -- separate particle
     | mkCl item preverb (passiveVP verb subject) -- passive
     ;
+  SPreverbLocation subject preverb location = mkCl subject preverb (mkVP location);
   SLocation item loc = mkCl item loc;
   SLocationTime item loc t = mkCl item (mkVP (mkVP loc) t);
   SExists item = mkCl item;

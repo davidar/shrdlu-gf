@@ -24,8 +24,8 @@ Query Present Simultaneous Positive (Polar (SPreverb (Thing ASg Pyramid) Can Sup
 
 Command StackUp (Thing Two Pyramid)
 
-Command StackUp (BothAnd (Thing APlural (Mod (Qual Red) Block)) (EitherOr (Thing ASg (Mod (Qual Green) Cube)) (Thing ASg Pyramid)))
-Command StackUp (BothAnd (Thing Both (Mod (Qual Red) Block)) (EitherOr (Thing ASg (Mod (Qual Green) Cube)) (Thing ASg Pyramid)))
+Command StackUp (And (BaseItem (Thing APlural (Mod (Qual Red) Block)) (Or (BaseItem (Thing ASg (Mod (Qual Green) Cube)) (Thing ASg Pyramid)))))
+Command StackUp (And (BaseItem (Thing Both (Mod (Qual Red) Block)) (Or (BaseItem (Thing ASg (Mod (Qual Green) Cube)) (Thing ASg Pyramid)))))
 
 Query Present Simultaneous Positive (QPred1 (Which Cube) SitOn (Thing The Table))
 
@@ -62,8 +62,8 @@ CommandLocation Put (R The (Mod (Qual Blue) Pyramid) (Rel Present Simultaneous P
 
 Query Present Simultaneous Positive (Polar (SExists (R Any Object (RelAnd (Rel Present Simultaneous Positive (RQual (MoreThan Big (Thing Every Pyramid)))) (Rel Present Simultaneous Negative (RQual (AsAs Wide (R The Object (Rel Present Simultaneous Positive (RPred1 Support It))))))))))
 
-Declare (Stmt Present Simultaneous Positive (SIdentity (Thing ASg Steeple) (BothAnd (R ASg Stack (Rel Present Simultaneous Positive (RPred1 Contain (Thing Two (Mod (Qual Green) Cube))))) (Thing ASg Pyramid))))
-Declare (Stmt Present Simultaneous Positive (SIdentity (Thing ASg Steeple) (R ASg Stack (Rel Present Simultaneous Positive (RPred1 Contain (BothAnd (Thing Two (Mod (Qual Green) Cube)) (Thing ASg Pyramid)))))))
+Declare (Stmt Present Simultaneous Positive (SIdentity (Thing ASg Steeple) (And (BaseItem (R ASg Stack (Rel Present Simultaneous Positive (RPred1 Contain (Thing Two (Mod (Qual Green) Cube))))) (Thing ASg Pyramid)))))
+Declare (Stmt Present Simultaneous Positive (SIdentity (Thing ASg Steeple) (R ASg Stack (Rel Present Simultaneous Positive (RPred1 Contain (And (BaseItem (Thing Two (Mod (Qual Green) Cube)) (Thing ASg Pyramid))))))))
 
 Query Present Simultaneous Positive (Polar (SExistsTime (Thing AnyPlural Steeple) Now))
 

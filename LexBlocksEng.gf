@@ -5,6 +5,7 @@ oper
   any_Quant = ExtraEng.any_Quant;
 
   both_Det = MorphoEng.mkDeterminer plural "both";
+  each_Det = MorphoEng.mkDeterminer singular "each";
 
   build_V2 = mkV2 (mkV "build");
   clean_off_V2 = mkV2 (partV (mkV "clean") "off");
@@ -13,6 +14,7 @@ oper
   clear_V2 = mkV2 (mkV "clear");
   contain_V2 = mkV2 (mkV "contain");
   grasp_V2 = mkV2 (mkV "grasp");
+  move_V2 = mkV2 (mkV "move");
   pick_up_V2 = mkV2 (partV (mkV "pick") "up");
   sit_on_V2 = mkV2 (partV (mkV "sit") "on");
   stack_up_V2 = mkV2 (partV (mkV "stack") "up");
@@ -29,6 +31,7 @@ oper
   box_N = mkN "box";
   colour_N = mkN "colour";
   cube_N = mkN "cube";
+  location_N = mkN "location";
   object_N = mkN "object";
   one_N = mkN "one";
   pyramid_N = mkN "pyramid";
@@ -36,8 +39,10 @@ oper
   steeple_N = mkN "steeple" "steeples";
   support_N = mkN "support";
   thing_N = mkN "thing";
+  top_N = mkN "top" "tops";
 
   support_N2 = mkN2 support_N;
+  top_N2 = mkN2 top_N;
 
   large_A = mkA "large";
   little_A = mkA "little";
@@ -54,6 +59,7 @@ oper
   while_Subj = mkSubj "while";
 
   then_Adv = mkAdv "then";
+  initially_Adv = mkAdv "initially";
 
   that_RP = which_RP | ExtraEng.that_RP;
 }

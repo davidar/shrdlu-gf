@@ -5,6 +5,7 @@ oper
   any_Quant : Quant;
 
   both_Det : Det;
+  each_Det : Det;
 
   build_V2 : V2;
   clean_off_V2 : V2;
@@ -13,6 +14,7 @@ oper
   clear_V2 : V2;
   contain_V2 : V2;
   grasp_V2 : V2;
+  move_V2 : V2;
   pick_up_V2 : V2;
   sit_on_V2 : V2;
   stack_up_V2 : V2;
@@ -29,6 +31,7 @@ oper
   box_N : N;
   colour_N : N;
   cube_N : N;
+  location_N : N;
   object_N : N;
   one_N : N;
   pyramid_N : N;
@@ -36,8 +39,10 @@ oper
   steeple_N : N;
   support_N : N;
   thing_N : N;
+  top_N : N;
 
   support_N2 : N2;
+  top_N2 : N2;
 
   large_A : A;
   little_A : A;
@@ -54,6 +59,7 @@ oper
   while_Subj : Subj;
 
   then_Adv : Adv;
+  initially_Adv : Adv;
 
   that_RP : RP;
 }
