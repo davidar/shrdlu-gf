@@ -1,0 +1,101 @@
+pick up a big red block
+holding(big red block)!
+
+grasp that pyramid
+holding(that pyramid)!
+
+find a block which is taller than the one which you are holding
+block tall.holding?
+
+put it into the box
+in(that, box)!
+
+what does the box contain
+contains'.box?
+
+what is the pyramid supported by
+supports.pyramid?
+
+how many blocks are not in the box
+#count(block ~in.box)?
+
+is at least one of them narrower than the one which I told you to pick up
+#any(that narrow.history$goal$holding)?
+
+is it supported
+#any(supports.that)?
+
+stack up two pyramids
+stack(pyramid, pyramid)!
+
+stack up both red blocks and either a green cube or a pyramid
+stack(red block, green cube | pyramid)!
+stack(red block, red block, green cube | pyramid)!
+
+which cube is sitting on the table
+cube on.table?
+
+is there a large block that is behind a pyramid
+#any(big block behind.pyramid)?
+
+put a small one onto the green cube which supports a pyramid
+on(small, green cube supports.pyramid)!
+
+put the littlest pyramid on top of it
+on(#most(small, pyramid), that)!
+
+does the shortest thing that the tallest pyramid's support supports support a thing which is green
+#any(#most(short, supports'[supports[#most(tall, pyramid)]]) supports.green)?
+
+which colour is it
+colour.that?
+
+how many things are on top of green cubes
+#count(above[green cube])?
+
+had you touched any pyramid before you put the green one on the little cube
+#any(pickup.pyramid before[put_on[green, small cube]])?
+#any(pickup.pyramid before[put_on[green, small cube]])?
+
+why did you do that
+why.that?
+
+why did you clear off that cube
+why[cleanoff[that cube]]?
+
+how did you do it
+how.that?
+
+how many objects did you touch while you were doing it
+#count(pickup. during.that)?
+
+what did the red cube support before you started to clean it off
+supports'[red cube, before.cleanoff.that]?
+
+how many blocks were to the left of the box then
+#count(block left_of[box; during.that])?
+
+put the blue pyramid on the block that is in the box
+on(blue pyramid, block in.box)!
+
+put the blue pyramid that is on the block in the box
+in(blue pyramid above.block, box)!
+
+is there any thing which is bigger than every pyramid but which is not as wide as the thing that supports it
+#any(#each(big, pyramid) wide'.supports.that)?
+
+a steeple is a stack which contains two green cubes and a pyramid
+steeple(set(stack contains[pair(green cube, green cube)], pyramid)).
+steeple(stack contains[set(pair(green cube, green cube), pyramid)]).
+
+are there any steeples now
+#any(steeple holds.now)?
+
+build a steeple
+steeple!
+
+have you picked up the biggest block
+#any(holding[#most(big, block)])?
+
+quit
+bye

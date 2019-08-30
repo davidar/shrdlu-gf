@@ -1,2 +1,4 @@
 .*.swp
 *.gfo
+.stack-work/
+*.cabal

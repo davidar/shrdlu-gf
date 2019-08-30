@@ -1,0 +1,13 @@
+name: blockparse
+version: 0.1.0.0
+dependencies:
+- base >= 4.7 && < 5
+- gf
+library:
+  source-dirs: .
+executables:
+  blockparse-exe:
+    main: Main.hs
+    source-dirs: .
+    dependencies:
+    - blockparse

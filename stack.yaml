@@ -1,0 +1,6 @@
+resolver: lts-12.26
+packages:
+- .
+extra-deps:
+- gf-3.10
+- cgi-3001.4.0.0
