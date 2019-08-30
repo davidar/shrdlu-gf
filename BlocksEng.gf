@@ -6,4 +6,5 @@ concrete BlocksEng of Blocks = BlocksI with
   (Extend = ExtendEng),
   (Idiom = IdiomEng),
   (Lexicon = LexiconEng),
+  (Noun = NounEng),
   (LexBlocks = LexBlocksEng);

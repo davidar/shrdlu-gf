@@ -53,6 +53,7 @@ fun
   And, Or : [Item] -> Item;
   SupportOf : Item -> Item;
   TopOf : Item -> Item;
+  Partitive : Determiner -> Item -> Item;
 
   Mod : Quality -> Kind -> Kind;
   Block, Pyramid, Box, One, Table, Cube, Object, Colour, Stack, Steeple, Loc : Kind;

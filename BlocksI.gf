@@ -1,4 +1,4 @@
-incomplete concrete BlocksI of Blocks = open Syntax, Conjunction, Extend, Idiom, Lexicon, LexBlocks in {
+incomplete concrete BlocksI of Blocks = open Syntax, Conjunction, Extend, Idiom, Lexicon, Noun, LexBlocks in {
 lincat
   Message = Utt;
   Statement = S;
@@ -101,6 +101,7 @@ lin
     | mkNP (mkDet (Extend.GenNP item)) support_N -- genitive
     ;
   TopOf item = mkNP the_Det (mkCN top_N2 item);
+  Partitive det item = CountNP det item;
 
   Mod quality kind = mkCN quality kind;
   Block = mkCN block_N;
