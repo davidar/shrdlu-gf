@@ -154,6 +154,7 @@ lin
     ;
   QQual i quality = mkQCl i quality;
   QLocation i loc = mkQCl i loc;
+  QLocationTime i loc t = mkQCl i (mkVP (mkVP loc) t);
   QIdentity i item = mkQCl i item;
 
   RPred1 verb item

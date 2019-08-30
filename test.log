@@ -54,7 +54,7 @@ Query Past Simultaneous Positive (QPred2Time (HowMany Object) You Touch (While (
 
 Query Past Simultaneous Positive (QPred2Time What (Thing The (Mod (Qual Red) Cube)) Support (Before (Stmt Past Simultaneous Positive (SPreverb You StartTo Clean It))))
 
-Declare (Stmt Past Simultaneous Positive (SLocationTime (Thing Five Block) (LeftOf (Thing The Box)) Then))
+Query Past Simultaneous Positive (QLocationTime (HowMany Block) (LeftOf (Thing The Box)) Then)
 
 CommandLocation Put (Thing The (Mod (Qual Blue) Pyramid)) (On (R The Block (Rel Present Simultaneous Positive (RLocation (In (Thing The Box))))))
 
@@ -67,7 +67,7 @@ Declare (Stmt Present Simultaneous Positive (SIdentity (Thing ASg Steeple) (R AS
 
 Query Present Simultaneous Positive (Polar (SExistsTime (Thing AnyPlural Steeple) Now))
 
-Command Build OneItem
+Command Build (Thing ASg Steeple)
 
 Query Present Anterior Positive (Polar (SPred You Grasp (Thing The (Mod (Most Big) Block))))
 

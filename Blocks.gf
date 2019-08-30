@@ -73,6 +73,7 @@ fun
   QPred2Time : Interrogative -> Item -> Verb -> Time -> QPredicate;
   QQual : Interrogative -> Quality -> QPredicate;
   QLocation : Interrogative -> Location -> QPredicate;
+  QLocationTime : Interrogative -> Location -> Time -> QPredicate;
   QIdentity : Interrogative -> Item -> QPredicate;
 
   RPred1 : Verb -> Item -> RPredicate;
